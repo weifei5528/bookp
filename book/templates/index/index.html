@@ -30,7 +30,7 @@
                                     {% for cv in v.info_list %}
                                     <div class="single-product-item">
                                         <figure class="product-thumb">
-                                            <a href="{:url('Play/index',array('id' => $cv['id']))}">
+                                            <a href="info/{{ v.id }}{{ sys_suffix }}">
                                             	<img src="{% static cv.img|get_file_path %}" alt="{{ cv.name }}">
                                             </a>
                                            

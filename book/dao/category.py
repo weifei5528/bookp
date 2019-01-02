@@ -43,7 +43,6 @@ class Category(Common):
         if len(category_ids) == 0:
             return None
         category_list = CategoryModel.objects.filter(id__in=category_ids, status=1).all()
-        print(category_list)
         for key, item in enumerate(category_list):
             books = BookDao.get_recommend_books(item.id)
             category_list[key].info_list = books

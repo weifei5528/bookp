@@ -9,3 +9,7 @@ def sys_config(request):
         sys_config[key] = v
     # print(sys_config)
     return {'sys_config': sys_config}
+
+
+def sys_suffix(request):
+    return {'sys_suffix': ".html"}

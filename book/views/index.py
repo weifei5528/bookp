@@ -1,10 +1,7 @@
-from __future__ import unicode_literals
-from django.shortcuts import HttpResponse
-from django.core import serializers
+# from __future__ import unicode_literals
 from book.dao.category import Category as CategoryDao
-from django.shortcuts import render_to_response, render
-from book.dao.book import Book as BookDao
-from book.dao.book import Book as BookDao
+from django.shortcuts import render
+from django.http import HttpResponse
 
 
 def index(request):
