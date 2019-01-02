@@ -4,17 +4,15 @@ from django.core import serializers
 from book.dao.category import Category as CategoryDao
 from django.shortcuts import render_to_response, render
 from book.dao.book import Book as BookDao
+from book.dao.book import Book as BookDao
 
 
 def index(request):
-    # res = Books.objects.filter(name="1111")
+    # 获取分类菜单
     category = CategoryDao()
-    list = category.get_rand_categories(3)
-    # for cat_id in list:
-    categories = category.get_menu();
-
-    # return HttpResponse(serializers.serialize('json', request))
+    categories = category.get_menu()
     context = {}
     context['category_list'] = categories
-    return render(request, 'layout.html', context)
-    # return HttpResponse(request.config)
+    list = category.get_random_category_books()
+    context['list'] = list
+    return render(request, 'index/index.html', context)

@@ -1,0 +1,70 @@
+{% extends "../layout.html" %}
+{% load staticfiles %}
+{% load image %}
+{% block content %}
+<div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="product-content-wrap">
+                    <!-- Product Tab Menu Start -->
+                    <nav class="product-teb-menu">
+                        <ul class="nav justify-content-center" role="tablist">
+                            {% for val in list %}
+                                <li  {% if forloop.counter == 1 %} class="active" {% endif %}>
+                                    <a   href="#category_{{ val.id }}" {% if forloop.counter == 1 %} class="active show" {% endif %}  data-toggle="tab">{{ val.name }}</a>
+                                </li>
+                            {% endfor %}
+
+
+                        </ul>
+                    </nav>
+                    <!-- Product Tab Menu End -->
+
+                    <!-- Product Tab Content Start -->
+                    <div class="tab-content" id="productContent">
+                        {% for v in list %}
+                        <div class="tab-pane fade show active" id="category_{{ v.id }}" role="tabpanel">
+                            <div class="products-wrapper">
+                                <div class="product-carousel owl-carousel">
+                                    <!-- Single Product Start -->
+                                    {% for cv in v.info_list %}
+                                    <div class="single-product-item">
+                                        <figure class="product-thumb">
+                                            <a href="{:url('Play/index',array('id' => $cv['id']))}">
+                                            	<img src="{% static cv.img|get_file_path %}" alt="{{ cv.name }}">
+                                            </a>
+                                           
+                                        </figure>
+                                        <div class="product-details">
+                                            <h2 class="product-title"><a href="single-product.html">{{ cv.name }}</a></h2>
+                                            <div class="rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                
+                                            </div>
+                                           
+
+                                          
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    <!-- Single Product End -->
+
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <!-- Product Tab Content End -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--== End Feature Products  Area ==-->
+
+
+{% endblock %}
+

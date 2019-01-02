@@ -11,7 +11,7 @@ class Category(models.Model):
     update_time = models.IntegerField(default=int(time.time()))
 
     def __str__(self):
-        return self.name
+        return u'%s %s ' % (self.id, self.name)
 
     class Meta:
         db_table = "dp_categories"
