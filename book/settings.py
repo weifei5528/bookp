@@ -66,6 +66,7 @@ TEMPLATES = [
                 'book.context.context_processors.sys_config'
             ],
         },
+
     },
 ]
 

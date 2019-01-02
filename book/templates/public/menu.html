@@ -1,3 +1,5 @@
+{% load staticfiles %}
+{% load image %}
 <!-- Start Main Menu Area -->
     <div class="navigation-area" id="fixheader">
         <div class="container">
@@ -9,12 +11,13 @@
                         </button>
                         <ul class="category-list-menu">
                             {% for cat in category_list %}
-                                {% if cat.sons %}
+
                                     <li class="category-item-parent dropdown-show {% if forloop.counter > 3 %} hidden {% endif %}">
 										<a href="#" class="category-item arrow-toggle">
-											<img src="{:get_file_path($cat['img'])}" alt="{{ cat.name }}"/>
+											<img src="{% static cat.img|get_file_path %}" alt="{{ cat.name }}"/>
 											<span>{{ cat.name }}</span>
 										</a>
+                                    {% if cat.sons %}
 										<ul class="mega-menu-wrap dropdown-nav">
 											<li class="mega-menu-item">
 												<!--<a href="#" class="mega-item-title">Laptop</a>-->
@@ -27,15 +30,8 @@
 											</li>
 
 										</ul>
+                                    {% endif %}
 									</li>
-                                {% else %}
-                                    <li class="category-item-parent {% if forloop.counter > 3 %} hidden {% endif %}">
-										<a href="#" class="category-item">
-											<img src="{:get_file_path($cat['img'])}" alt={{ cat.name }}"/>
-											<span>{{ cat.name }}</span>
-										</a>
-									</li>
-                                {% endif %}
 
                             {% endfor %}
                             <li class="category-item-parent">
