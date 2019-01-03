@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from book.views import index as view_index
 from book.views import book as book_view
+from book.views import login as login_view
+from book.views import user as user_view
 PRE = '.html'
 
 
@@ -25,4 +27,6 @@ urlpatterns = [
     path('', view_index.index),
     path('index'+PRE, view_index.index),
     path('info/<int:id>'+PRE, book_view.info),
+    path('login'+PRE, login_view.login),
+    path('account'+PRE, user_view.account),
 ]
