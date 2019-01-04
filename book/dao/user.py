@@ -13,7 +13,7 @@ class User(Common):
     def check_login(self, username, password):
         try:
             if CommonUtil.check_email(username):
-                user = UserModel.objects.get(email=username)
+                user = UserModel.objects.get(email=username, status=1)
             else:
                 user = UserModel.objects.get(username=username)
         except UserModel.DoesNotExist:

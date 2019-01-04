@@ -133,7 +133,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
+# AUTH_USER_MODEL = 'book.User'
 # session设置
 SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'  # 引擎（默认）
 SESSION_COOKIE_NAME = "sessionid"  # Session的cookie保存在浏览器上时的key，即：sessionid＝随机字符串（默认）

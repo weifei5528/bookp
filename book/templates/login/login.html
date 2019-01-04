@@ -8,13 +8,14 @@
                     <div class="login-reg-form-wrap  pr-lg-50">
                         <h2>登录</h2>
 
-                        <form action="#" method="post">
+                        <form action="login{{ sys_suffix }}" method="post">
+                            {% include 'public/csrf.html' %}
                             <div class="single-input-item">
-                                <input type="email" placeholder="请输入您的邮件地址" required />
+                                <input type="email" name="username" placeholder="请输入您的邮件地址" required />
                             </div>
 
                             <div class="single-input-item">
-                                <input type="password" placeholder="请输入您的密码" required />
+                                <input type="password" name="password" placeholder="请输入您的密码" required />
                             </div>
 
                             <div class="single-input-item">
