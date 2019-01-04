@@ -132,6 +132,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+# 登录验证的类
+AUTHENTICATION_BACKENDS = (
+    'book.util.auth.CustomBackend',
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/

@@ -27,6 +27,7 @@ urlpatterns = [
     path('', view_index.index),
     path('index'+PRE, view_index.index, name="index"),
     path('info/<int:id>'+PRE, book_view.info),
-    path('login'+PRE+"(?next=*)?", login_view.login, name='login'),
+    path('login'+PRE, login_view.login, name='login'),
+    # re_path(r'^login'+PRE+"(\?next=*)?", login_view.login, name='login'),
     path('account'+PRE, user_view.account),
 ]

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, reverse
 from book.dao.user import User as UserDao
-
+from book.decorators import check_session
 from django.core import serializers
 from django.http import HttpResponse
 from book.util.common import Common
@@ -13,15 +13,26 @@ def login(request):
     else:
         username = request.POST.get('username', None)
         password = request.POST.get('password', None)
-        user = UserDao()
-        res = user.check_login(username, password)
-        if res:
+        auth = authenticate(request, username=username, password=password)
+        print(auth)
+        """
+                if res:
             request.session['id'] = res.id
             request.session['username'] = res.username
             request.session['email'] = res.email
             request.session['phone'] = res.phone
-        return redirect(reverse('index'))
+            print(request.session.get('id', None))
+            return redirect(reverse('index'))
+        else:
+        """
 
+        return HttpResponse("用户名密码错误")
+
+
+# 退出登录
+@check_session
+def logout(request):
+    del request.session['id']
 
 
 
